@@ -4,7 +4,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feliz 4 Meses, Meu Amor</title>
-  <link rel="stylesheet" href="./css/main.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+    
+    .container {
+      text-align: center;
+      position: relative;
+    }
+    
+    .message {
+      font-size: 2.5rem;
+      color: #9c27b0;
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 2s forwards 3s;
+    }
+    
+    .sub-message {
+      font-size: 1.2rem;
+      color: #555;
+      margin-top: 15px;
+      opacity: 0;
+      animation: fadeIn 2s forwards 4s;
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .lily {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .heart {
+      position: absolute;
+      opacity: 0;
+      animation: floatHeart 15s linear infinite;
+    }
+    
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    .date {
+      font-size: 1rem;
+      color: #888;
+      margin-top: 15px;
+      opacity: 0;
+      animation: fadeIn 2s forwards 4.5s;
+    }
+    
+    a {
+      color: #9c27b0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    a:hover {
+      color: #7b1fa2;
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -39,10 +127,80 @@
     
     <h1 class="message">Feliz 4 Meses Elizandra</h1>
     <p class="sub-message">Cada momento com <a href="https://photos.app.goo.gl/LbAFyTio8C69DCaD7" target="_blank">você</a> floresce como um lírio</p>
-    <p class="date">11 de Abril de 2025</p>
   </div>
 
-  <!-- Using absolute path with the leading slash removed -->
-  <script src="./js/animations.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Stem animation
+      const stem = document.getElementById('stem');
+      setTimeout(() => {
+        stem.style.transition = 'stroke-dashoffset 2s ease-in-out';
+        stem.style.strokeDashoffset = '0';
+      }, 500);
+      
+      // Leaves animation
+      const leaf1 = document.getElementById('leaf1');
+      const leaf2 = document.getElementById('leaf2');
+      setTimeout(() => {
+        leaf1.style.transition = 'opacity 1s ease-in-out';
+        leaf1.style.opacity = '1';
+      }, 1500);
+      setTimeout(() => {
+        leaf2.style.transition = 'opacity 1s ease-in-out';
+        leaf2.style.opacity = '1';
+      }, 1800);
+      
+      // Stamen animation
+      const stamen = document.querySelector('.stamen');
+      const anther = document.querySelector('.anther');
+      setTimeout(() => {
+        stamen.style.transition = 'opacity 0.8s ease-in-out';
+        stamen.style.opacity = '1';
+        anther.style.transition = 'opacity 0.8s ease-in-out';
+        anther.style.opacity = '1';
+      }, 2000);
+      
+      // Petal animations
+      const petals = document.querySelectorAll('.petal');
+      petals.forEach((petal, index) => {
+        setTimeout(() => {
+          petal.style.transition = 'opacity 0.8s ease-in-out';
+          petal.style.opacity = '1';
+        }, 2200 + (index * 150));
+      });
+      
+      // Detail animations
+      const details = document.querySelectorAll('.detail');
+      details.forEach((detail, index) => {
+        setTimeout(() => {
+          detail.style.transition = 'opacity 0.8s ease-in-out';
+          detail.style.opacity = '1';
+        }, 3000 + (index * 150));
+      });
+      
+      // Create floating hearts
+      for (let i = 0; i < 15; i++) {
+        createHeart();
+      }
+      
+      // Set interval to create hearts
+      setInterval(createHeart, 2000);
+    });
+    
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      document.body.appendChild(heart);
+      
+      // Clean up hearts after animation
+      setTimeout(() => {
+        heart.remove();
+      }, 15000);
+    }
+  </script>
 </body>
 </html>
