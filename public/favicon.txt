@@ -1,0 +1,2 @@
+This would be a binary file - you'll need to add a favicon.ico file here.
+You can generate one online or use any small icon you prefer.

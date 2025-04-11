@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "lily-anniversary-page",
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
