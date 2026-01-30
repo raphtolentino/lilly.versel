@@ -1,251 +1,211 @@
 <!doctype html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Site para Elizandra</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site para Elizandra</title>
 
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                min-height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-                font-family: Arial, sans-serif;
-                overflow-x: hidden;
-            }
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
 
-            .container {
-                text-align: center;
-                max-width: 360px;
-                padding: 20px;
-            }
+    .container {
+      text-align: center;
+      max-width: 360px;
+      padding: 20px;
+    }
 
-            .flower-heart {
-                position: relative;
-                width: 300px;
-                height: 300px;
-                margin: 0 auto 20px;
-            }
+    .flower-heart {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 0 auto 20px;
+    }
 
-            .lily {
-                width: 70px;
-                height: 70px;
-                position: absolute;
-                cursor: pointer;
-                opacity: 0;
-                transform: scale(0.5);
-                transition:
-                    opacity 1.4s ease,
-                    transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
-            }
+    .lily {
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 1.4s ease, transform 1.6s cubic-bezier(.22,1,.36,1);
+    }
 
-            .message {
-                font-size: 2rem;
-                color: #9c27b0;
-                margin-top: 40px;
-                opacity: 0;
-                transform: translateY(30px);
-                animation: titleRise 2.6s cubic-bezier(0.22, 1, 0.36, 1)
-                    forwards 5s;
-            }
+    .message {
+      font-size: 2rem;
+      color: #9c27b0;
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: titleRise 2.6s cubic-bezier(.22,1,.36,1) forwards 5s;
+    }
 
-            .sub-message {
-                font-size: 1.05rem;
-                color: #555;
-                margin-top: 12px;
-                opacity: 0;
-                animation: fadeIn 2s forwards 6s;
-            }
+    .sub-message {
+      font-size: 1.05rem;
+      color: #555;
+      margin-top: 12px;
+      opacity: 0;
+      animation: fadeIn 2s forwards 6s;
+    }
 
-            .reason-box {
-                margin-top: 24px;
-                font-size: 1.15rem;
-                color: #7b1fa2;
-                min-height: 2.6em;
-                opacity: 0;
-                text-align: center;
-                transition: opacity 0.6s ease;
-                line-height: 1.4em;
-                word-wrap: break-word;
-            }
+    .reason-box {
+      margin-top: 24px;
+      font-size: 1.15rem;
+      color: #7b1fa2;
+      min-height: 2.6em;
+      opacity: 0;
+      text-align: center;
+      transition: opacity 0.6s ease;
+      line-height: 1.4em;
+      word-wrap: break-word;
+    }
 
-            a {
-                color: #9c27b0;
-                text-decoration: none;
-            }
+    a {
+      color: #9c27b0;
+      text-decoration: none;
+    }
 
-            a:hover {
-                text-decoration: underline;
-            }
+    a:hover {
+      text-decoration: underline;
+    }
 
-            .heart {
-                position: absolute;
-                animation: floatHeart 15s linear infinite;
-                opacity: 0;
-                z-index: -1;
-            }
+    .heart {
+      position: absolute;
+      animation: floatHeart 15s linear infinite;
+      opacity: 0;
+      z-index: -1;
+    }
 
-            @keyframes titleRise {
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
+    @keyframes titleRise {
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-            @keyframes fadeIn {
-                to {
-                    opacity: 1;
-                }
-            }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
-            @keyframes floatHeart {
-                0% {
-                    transform: translateY(0);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 0.8;
-                }
-                90% {
-                    opacity: 0.8;
-                }
-                100% {
-                    transform: translateY(-100vh);
-                    opacity: 0;
-                }
-            }
-        </style>
-    </head>
+    @keyframes floatHeart {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
 
-    <body>
-        <div class="container">
-            <div class="flower-heart" id="flowerHeart"></div>
+<body>
+  <div class="container">
+    <div class="flower-heart" id="flowerHeart"></div>
 
-            <h1 class="message">Feliz 1 ano e 2 meses,<br />Elizandra</h1>
+    <h1 class="message">Feliz 1 ano e 2 meses,<br />Elizandra</h1>
 
-            <p class="sub-message">
-                Cada flor guarda um motivo pelo qual eu amo
-                <a
-                    href="https://photos.app.goo.gl/c8NmaDNJNvZzmDsT8"
-                    target="_blank"
-                    >você</a
-                >
-            </p>
+    <p class="sub-message">
+      Cada flor guarda um motivo pelo qual eu amo
+      <a href="https://photos.app.goo.gl/LbAFyTio8C69DCaD7" target="_blank">voce</a>
+    </p>
 
-            <div class="reason-box" id="reasonBox"></div>
-        </div>
+    <div class="reason-box" id="reasonBox"></div>
+  </div>
 
-        <script>
-            const reasons = [
-  "Você me faz sentir perto mesmo estando longe 💜",
-  "Nossas conversas iluminam meu dia 💜",
-  "Seu sorriso atravessa qualquer tela 💜",
-  "Sinto seu abraço mesmo à distância 💜",
-  "Você me entende sem precisar de palavras 💜",
-  "Cada mensagem sua aquece meu coração 💜",
-  "Nossas lembranças me fazem sorrir 💜",
-  "Você me inspira a ser melhor a cada dia 💜",
-  "Esperar por você vale cada segundo 💜",
-  "Mesmo longe, você está sempre comigo 💜",
-  "Seu amor me dá forças todos os dias 💜",
-  "Sonhar com nosso reencontro me faz feliz 💜",
-  "Cada momento com você, mesmo distante, é precioso 💜"
-];
+  <script>
+    const reasons = [
+      "Voce me faz sentir perto mesmo estando longe 💜",
+      "Nossas conversas iluminam meu dia 💜",
+      "Seu sorriso atravessa qualquer tela 💜",
+      "Sinto seu abraco mesmo a distancia 💜",
+      "Voce me entende sem precisar de palavras 💜",
+      "Cada mensagem sua aquece meu coracao 💜",
+      "Nossas lembrancas me fazem sorrir 💜",
+      "Voce me inspira a ser melhor a cada dia 💜",
+      "Esperar por voce vale cada segundo 💜",
+      "Mesmo longe, voce esta sempre comigo 💜",
+      "Seu amor me da forcas todos os dias 💜",
+      "Sonhar com nosso reencontro me faz feliz 💜",
+      "Cada momento com voce, mesmo distante, e precioso 💜"
+    ];
 
+    const colors = [
+      "#f48fb1", "#ce93d8", "#b39ddb",
+      "#9fa8da", "#90caf9", "#81d4fa",
+      "#80deea", "#80cbc4", "#a5d6a7",
+      "#c5e1a5", "#e6ee9c", "#fff59d",
+      "#ffcc80"
+    ];
 
-            const colors = [
-                "#f48fb1",
-                "#ce93d8",
-                "#b39ddb",
-                "#9fa8da",
-                "#90caf9",
-                "#81d4fa",
-                "#80deea",
-                "#80cbc4",
-                "#a5d6a7",
-                "#c5e1a5",
-                "#e6ee9c",
-                "#fff59d",
-                "#ffcc80",
-            ];
+    const positions = [
+      [115, 30], [155, 30],
+      [70, 70],  [200, 70],
+      [40, 120], [230, 120],
+      [70, 180], [200, 180],
+      [115, 220],[155, 220],
+      [135, 260],
+      [95, 140],[135, 140]
+    ];
 
-            const positions = [
-                [115, 30],
-                [155, 30],
-                [70, 70],
-                [200, 70],
-                [40, 120],
-                [230, 120],
-                [70, 180],
-                [200, 180],
-                [115, 220],
-                [155, 220],
-                [135, 260],
-                [95, 140],
-                [135, 140],
-            ];
+    const heartContainer = document.getElementById("flowerHeart");
+    const reasonBox = document.getElementById("reasonBox");
 
-            const heartContainer = document.getElementById("flowerHeart");
-            const reasonBox = document.getElementById("reasonBox");
+    // Smooth typewriter effect
+    function typeText(text) {
+      reasonBox.textContent = "";
+      reasonBox.style.opacity = "1";
+      let i = 0;
+      const interval = setInterval(() => {
+        reasonBox.textContent += text.charAt(i);
+        i++;
+        if (i >= text.length) clearInterval(interval);
+      }, 45); // smooth typing speed
+    }
 
-            // Function for smooth typewriter effect
-            function typeText(text) {
-                reasonBox.textContent = "";
-                reasonBox.style.opacity = "1";
-                let i = 0;
-                const interval = setInterval(() => {
-                    reasonBox.textContent += text.charAt(i);
-                    i++;
-                    if (i >= text.length) clearInterval(interval);
-                }, 45); // smooth typing speed
-            }
+    positions.forEach((pos, index) => {
+      const lily = document.createElementNS("http://www.w3.org/2000/svg","svg");
+      lily.setAttribute("viewBox","0 0 100 120");
+      lily.classList.add("lily");
+      lily.style.left = pos[0] + "px";
+      lily.style.top = pos[1] + "px";
 
-            positions.forEach((pos, index) => {
-                const lily = document.createElementNS(
-                    "http://www.w3.org/2000/svg",
-                    "svg",
-                );
-                lily.setAttribute("viewBox", "0 0 100 120");
-                lily.classList.add("lily");
-                lily.style.left = pos[0] + "px";
-                lily.style.top = pos[1] + "px";
-
-                // Lily of the Valley shape
-                lily.innerHTML = `
+      // Lily of the Valley shape
+      lily.innerHTML = `
         <path d="M50 110 Q48 80 50 50" stroke="#3c9c54" stroke-width="3" fill="none"/>
         <path d="M50 50 Q42 60 45 70 Q50 78 55 70 Q58 60 50 50" fill="${colors[index]}"/>
         <path d="M50 65 Q42 75 45 85 Q50 92 55 85 Q58 75 50 65" fill="${colors[index]}"/>
       `;
 
-                setTimeout(() => {
-                    lily.style.opacity = "1";
-                    lily.style.transform = "scale(1)";
-                }, index * 400);
+      setTimeout(() => {
+        lily.style.opacity = "1";
+        lily.style.transform = "scale(1)";
+      }, index * 400);
 
-                lily.addEventListener("click", () => {
-                    typeText(reasons[index]);
-                });
+      lily.addEventListener("click", () => {
+        typeText(reasons[index]);
+      });
 
-                heartContainer.appendChild(lily);
-            });
+      heartContainer.appendChild(lily);
+    });
 
-            function createHeart() {
-                const heart = document.createElement("div");
-                heart.className = "heart";
-                heart.innerHTML = "💜❤️"; // purple heart emoji
-                heart.style.left = Math.random() * 100 + "vw";
-                heart.style.fontSize = Math.random() * 30 + 15 + "px";
-                heart.style.animationDuration = Math.random() * 12 + 6 + "s";
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 15000);
-            }
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💝 💕 💜 💕 "; // purple heart emoji
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 30 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 12 + 6 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 15000);
+    }
 
-            for (let i = 0; i < 25; i++) createHeart(); // more hearts
-            setInterval(createHeart, 1500);
-        </script>
-    </body>
+    for (let i = 0; i < 25; i++) createHeart(); // more hearts
+    setInterval(createHeart, 1500);
+  </script>
+</body>
 </html>
