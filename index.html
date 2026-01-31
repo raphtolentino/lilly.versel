@@ -1,211 +1,206 @@
-<!doctype html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Site para Elizandra</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site para Elizandra </title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
       background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
     }
 
     .container {
       text-align: center;
-      max-width: 360px;
-      padding: 20px;
-    }
-
-    .flower-heart {
       position: relative;
-      width: 300px;
-      height: 300px;
-      margin: 0 auto 20px;
-    }
-
-    .lily {
-      width: 70px;
-      height: 70px;
-      position: absolute;
-      cursor: pointer;
-      opacity: 0;
-      transform: scale(0.5);
-      transition: opacity 1.4s ease, transform 1.6s cubic-bezier(.22,1,.36,1);
     }
 
     .message {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #9c27b0;
-      margin-top: 40px;
+      margin-top: 20px;
       opacity: 0;
-      transform: translateY(30px);
-      animation: titleRise 2.6s cubic-bezier(.22,1,.36,1) forwards 5s;
+      transform: translateY(20px);
+      animation: fadeIn 2s forwards 3s;
     }
 
     .sub-message {
-      font-size: 1.05rem;
+      font-size: 1.2rem;
       color: #555;
-      margin-top: 12px;
+      margin-top: 15px;
       opacity: 0;
-      animation: fadeIn 2s forwards 6s;
+      animation: fadeIn 2s forwards 4s;
     }
 
-    .reason-box {
-      margin-top: 24px;
-      font-size: 1.15rem;
-      color: #7b1fa2;
-      min-height: 2.6em;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .lily {
+      width: 300px;
+      height: 300px;
+    }
+
+    .heart {
+      position: absolute;
       opacity: 0;
-      text-align: center;
-      transition: opacity 0.6s ease;
-      line-height: 1.4em;
-      word-wrap: break-word;
+      animation: floatHeart 15s linear infinite;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .date {
+      font-size: 1rem;
+      color: #888;
+      margin-top: 15px;
+      opacity: 0;
+      animation: fadeIn 2s forwards 4.5s;
     }
 
     a {
       color: #9c27b0;
       text-decoration: none;
+      transition: all 0.3s ease;
     }
 
     a:hover {
+      color: #7b1fa2;
       text-decoration: underline;
-    }
-
-    .heart {
-      position: absolute;
-      animation: floatHeart 15s linear infinite;
-      opacity: 0;
-      z-index: -1;
-    }
-
-    @keyframes titleRise {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes floatHeart {
-      0% { transform: translateY(0); opacity: 0; }
-      10% { opacity: 0.8; }
-      90% { opacity: 0.8; }
-      100% { transform: translateY(-100vh); opacity: 0; }
     }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <div class="flower-heart" id="flowerHeart"></div>
+    <svg class="lily" viewBox="0 0 400 400">
+      <!-- Stem -->
+      <path id="stem" d="M200,380 Q200,320 200,250" stroke="#3c9c54" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="400" stroke-dashoffset="400" />
 
-    <h1 class="message">Feliz 1 ano e 2 meses,<br />Elizandra</h1>
+      <!-- Leaves -->
+      <path id="leaf1" d="M200,330 Q170,310 150,330 Q170,350 200,330" fill="#3c9c54" opacity="0" />
+      <path id="leaf2" d="M200,300 Q230,280 250,300 Q230,320 200,300" fill="#3c9c54" opacity="0" />
 
-    <p class="sub-message">
-      Cada flor guarda um motivo pelo qual eu amo
-      <a href="https://photos.app.goo.gl/LbAFyTio8C69DCaD7" target="_blank">voce</a>
-    </p>
+      <!-- Lily flower -->
+      <g id="lily">
+        <!-- Stamen -->
+        <path class="stamen" d="M200,200 L200,220" stroke="#ffcc80" stroke-width="3" opacity="0" />
+        <circle class="anther" cx="200" cy="200" r="5" fill="#ff9800" opacity="0" />
 
-    <div class="reason-box" id="reasonBox"></div>
+        <!-- Petals -->
+        <path class="petal" d="M200,200 Q230,150 200,120 Q170,150 200,200" fill="#f3e5f5" opacity="0" />
+        <path class="petal" d="M200,200 Q250,170 270,130 Q220,160 200,200" fill="#f3e5f5" opacity="0" />
+        <path class="petal" d="M200,200 Q150,170 130,130 Q180,160 200,200" fill="#f3e5f5" opacity="0" />
+        <path class="petal" d="M200,200 Q235,210 270,180 Q235,190 200,200" fill="#f3e5f5" opacity="0" />
+        <path class="petal" d="M200,200 Q165,210 130,180 Q165,190 200,200" fill="#f3e5f5" opacity="0" />
+        <path class="petal" d="M200,200 Q220,230 250,250 Q230,220 200,200" fill="#f3e5f5" opacity="0" />
+
+        <!-- Inner details -->
+        <path class="detail" d="M200,200 Q215,170 200,150 Q185,170 200,200" fill="#e1bee7" opacity="0" />
+        <path class="detail" d="M200,200 Q230,185 250,160 Q220,180 200,200" fill="#e1bee7" opacity="0" />
+        <path class="detail" d="M200,200 Q170,185 150,160 Q180,180 200,200" fill="#e1bee7" opacity="0" />
+      </g>
+    </svg>
+
+    <h1 class="message">Feliz 1 ano e 2 Meses Elizandra</h1>
+    <p class="sub-message">Cada momento com <a href="https://photos.app.goo.gl/LbAFyTio8C69DCaD7" target="_blank">você</a> floresce como um lírio</p>
   </div>
 
   <script>
-    const reasons = [
-      "Voce me faz sentir perto mesmo estando longe 💜",
-      "Nossas conversas iluminam meu dia 💜",
-      "Seu sorriso atravessa qualquer tela 💜",
-      "Sinto seu abraco mesmo a distancia 💜",
-      "Voce me entende sem precisar de palavras 💜",
-      "Cada mensagem sua aquece meu coracao 💜",
-      "Nossas lembrancas me fazem sorrir 💜",
-      "Voce me inspira a ser melhor a cada dia 💜",
-      "Esperar por voce vale cada segundo 💜",
-      "Mesmo longe, voce esta sempre comigo 💜",
-      "Seu amor me da forcas todos os dias 💜",
-      "Sonhar com nosso reencontro me faz feliz 💜",
-      "Cada momento com voce, mesmo distante, e precioso 💜"
-    ];
-
-    const colors = [
-      "#f48fb1", "#ce93d8", "#b39ddb",
-      "#9fa8da", "#90caf9", "#81d4fa",
-      "#80deea", "#80cbc4", "#a5d6a7",
-      "#c5e1a5", "#e6ee9c", "#fff59d",
-      "#ffcc80"
-    ];
-
-    const positions = [
-      [115, 30], [155, 30],
-      [70, 70],  [200, 70],
-      [40, 120], [230, 120],
-      [70, 180], [200, 180],
-      [115, 220],[155, 220],
-      [135, 260],
-      [95, 140],[135, 140]
-    ];
-
-    const heartContainer = document.getElementById("flowerHeart");
-    const reasonBox = document.getElementById("reasonBox");
-
-    // Smooth typewriter effect
-    function typeText(text) {
-      reasonBox.textContent = "";
-      reasonBox.style.opacity = "1";
-      let i = 0;
-      const interval = setInterval(() => {
-        reasonBox.textContent += text.charAt(i);
-        i++;
-        if (i >= text.length) clearInterval(interval);
-      }, 45); // smooth typing speed
-    }
-
-    positions.forEach((pos, index) => {
-      const lily = document.createElementNS("http://www.w3.org/2000/svg","svg");
-      lily.setAttribute("viewBox","0 0 100 120");
-      lily.classList.add("lily");
-      lily.style.left = pos[0] + "px";
-      lily.style.top = pos[1] + "px";
-
-      // Lily of the Valley shape
-      lily.innerHTML = `
-        <path d="M50 110 Q48 80 50 50" stroke="#3c9c54" stroke-width="3" fill="none"/>
-        <path d="M50 50 Q42 60 45 70 Q50 78 55 70 Q58 60 50 50" fill="${colors[index]}"/>
-        <path d="M50 65 Q42 75 45 85 Q50 92 55 85 Q58 75 50 65" fill="${colors[index]}"/>
-      `;
-
+    document.addEventListener('DOMContentLoaded', function() {
+      // Stem animation
+      const stem = document.getElementById('stem');
       setTimeout(() => {
-        lily.style.opacity = "1";
-        lily.style.transform = "scale(1)";
-      }, index * 400);
+        stem.style.transition = 'stroke-dashoffset 2s ease-in-out';
+        stem.style.strokeDashoffset = '0';
+      }, 500);
 
-      lily.addEventListener("click", () => {
-        typeText(reasons[index]);
+      // Leaves animation
+      const leaf1 = document.getElementById('leaf1');
+      const leaf2 = document.getElementById('leaf2');
+      setTimeout(() => {
+        leaf1.style.transition = 'opacity 1s ease-in-out';
+        leaf1.style.opacity = '1';
+      }, 1500);
+      setTimeout(() => {
+        leaf2.style.transition = 'opacity 1s ease-in-out';
+        leaf2.style.opacity = '1';
+      }, 1800);
+
+      // Stamen animation
+      const stamen = document.querySelector('.stamen');
+      const anther = document.querySelector('.anther');
+      setTimeout(() => {
+        stamen.style.transition = 'opacity 0.8s ease-in-out';
+        stamen.style.opacity = '1';
+        anther.style.transition = 'opacity 0.8s ease-in-out';
+        anther.style.opacity = '1';
+      }, 2000);
+
+      // Petal animations
+      const petals = document.querySelectorAll('.petal');
+      petals.forEach((petal, index) => {
+        setTimeout(() => {
+          petal.style.transition = 'opacity 0.8s ease-in-out';
+          petal.style.opacity = '1';
+        }, 2200 + (index * 150));
       });
 
-      heartContainer.appendChild(lily);
+      // Detail animations
+      const details = document.querySelectorAll('.detail');
+      details.forEach((detail, index) => {
+        setTimeout(() => {
+          detail.style.transition = 'opacity 0.8s ease-in-out';
+          detail.style.opacity = '1';
+        }, 3000 + (index * 150));
+      });
+
+      // Create floating hearts
+      for (let i = 0; i < 15; i++) {
+        createHeart();
+      }
+
+      // Set interval to create hearts
+      setInterval(createHeart, 2000);
     });
 
     function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "💝 💕 💜 💕 "; // purple heart emoji
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = Math.random() * 30 + 15 + "px";
-      heart.style.animationDuration = Math.random() * 12 + 6 + "s";
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 15000);
-    }
 
-    for (let i = 0; i < 25; i++) createHeart(); // more hearts
-    setInterval(createHeart, 1500);
+      // Clean up hearts after animation
+      setTimeout(() => {
+        heart.remove();
+      }, 15000);
+    }
   </script>
 </body>
 </html>
