@@ -1,9 +1,8 @@
-
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site para Elizandra </title>
+  <title>Site para Elizandra</title>
   <style>
     body {
       margin: 0;
@@ -49,6 +48,7 @@
     .lily {
       width: 300px;
       height: 300px;
+      position: relative;
     }
 
     .heart {
@@ -58,20 +58,10 @@
     }
 
     @keyframes floatHeart {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.8;
-      }
-      90% {
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
     }
 
     .date {
@@ -92,11 +82,56 @@
       color: #7b1fa2;
       text-decoration: underline;
     }
+
+    /* Sparkles around lily */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: sparkle 2s linear infinite;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translate(0,0) scale(0.5); opacity: 1; }
+      50% { transform: translate(10px,-10px) scale(1); opacity: 0.5; }
+      100% { transform: translate(0,0) scale(0.5); opacity: 1; }
+    }
+
+    /* Floating months badge */
+    .badge {
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      background: #9c27b0;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      opacity: 0.9;
+      animation: floatBadge 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatBadge {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <svg class="lily" viewBox="0 0 400 400">
+      <!-- Gradients for side petals -->
+      <defs>
+        <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FFA500" />
+          <stop offset="100%" stop-color="#FF8C00" />
+        </linearGradient>
+      </defs>
+
       <!-- Stem -->
       <path id="stem" d="M200,380 Q200,320 200,250" stroke="#3c9c54" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="400" stroke-dashoffset="400" />
 
@@ -110,13 +145,15 @@
         <path class="stamen" d="M200,200 L200,220" stroke="#ffcc80" stroke-width="3" opacity="0" />
         <circle class="anther" cx="200" cy="200" r="5" fill="#ff9800" opacity="0" />
 
-        <!-- Petals -->
+        <!-- Main petals -->
         <path class="petal" d="M200,200 Q230,150 200,120 Q170,150 200,200" fill="#f3e5f5" opacity="0" />
-        <path class="petal" d="M200,200 Q250,170 270,130 Q220,160 200,200" fill="#f3e5f5" opacity="0" />
         <path class="petal" d="M200,200 Q150,170 130,130 Q180,160 200,200" fill="#f3e5f5" opacity="0" />
         <path class="petal" d="M200,200 Q235,210 270,180 Q235,190 200,200" fill="#f3e5f5" opacity="0" />
         <path class="petal" d="M200,200 Q165,210 130,180 Q165,190 200,200" fill="#f3e5f5" opacity="0" />
-        <path class="petal" d="M200,200 Q220,230 250,250 Q230,220 200,200" fill="#f3e5f5" opacity="0" />
+
+        <!-- Side petals in orange -->
+        <path class="petal side" d="M200,200 Q250,170 270,130 Q220,160 200,200" fill="url(#orangeGradient)" opacity="0" />
+        <path class="petal side" d="M200,200 Q220,230 250,250 Q230,220 200,200" fill="url(#orangeGradient)" opacity="0" />
 
         <!-- Inner details -->
         <path class="detail" d="M200,200 Q215,170 200,150 Q185,170 200,200" fill="#e1bee7" opacity="0" />
@@ -125,8 +162,8 @@
       </g>
     </svg>
 
-    <h1 class="message">Feliz 1 ano e 2 Meses Elizandra</h1>
-    <p class="sub-message">Cada momento com <a href="https://photos.app.goo.gl/LbAFyTio8C69DCaD7" target="_blank">você</a> floresce como um lírio</p>
+    <h1 class="message">Feliz 1 ano e 1 mês Elizandra</h1>
+    <p class="sub-message">Cada momento com <a href="https://photos.app.goo.gl/LbAFyTio8C69DCaD7" target="_blank">você</a> floresce como um lírio, e nosso amor só cresce</p>
   </div>
 
   <script>
@@ -141,66 +178,65 @@
       // Leaves animation
       const leaf1 = document.getElementById('leaf1');
       const leaf2 = document.getElementById('leaf2');
-      setTimeout(() => {
-        leaf1.style.transition = 'opacity 1s ease-in-out';
-        leaf1.style.opacity = '1';
-      }, 1500);
-      setTimeout(() => {
-        leaf2.style.transition = 'opacity 1s ease-in-out';
-        leaf2.style.opacity = '1';
-      }, 1800);
+      setTimeout(() => leaf1.style.opacity = '1', 1500);
+      setTimeout(() => leaf2.style.opacity = '1', 1800);
 
       // Stamen animation
       const stamen = document.querySelector('.stamen');
       const anther = document.querySelector('.anther');
       setTimeout(() => {
-        stamen.style.transition = 'opacity 0.8s ease-in-out';
         stamen.style.opacity = '1';
-        anther.style.transition = 'opacity 0.8s ease-in-out';
         anther.style.opacity = '1';
       }, 2000);
 
-      // Petal animations
+      // Petal animations with gentle falling
       const petals = document.querySelectorAll('.petal');
       petals.forEach((petal, index) => {
         setTimeout(() => {
-          petal.style.transition = 'opacity 0.8s ease-in-out';
           petal.style.opacity = '1';
+          petal.style.transition = 'opacity 0.8s ease-in-out, transform 5s ease-in';
+          petal.style.transform = 'translateY(0)';
+          // Falling effect after bloom
+          setTimeout(() => {
+            petal.style.transform = 'translateY(50px) rotate(15deg)';
+          }, 2000);
         }, 2200 + (index * 150));
       });
 
       // Detail animations
       const details = document.querySelectorAll('.detail');
       details.forEach((detail, index) => {
-        setTimeout(() => {
-          detail.style.transition = 'opacity 0.8s ease-in-out';
-          detail.style.opacity = '1';
-        }, 3000 + (index * 150));
+        setTimeout(() => detail.style.opacity = '1', 3000 + (index * 150));
       });
 
-      // Create floating hearts
-      for (let i = 0; i < 15; i++) {
-        createHeart();
+      // Floating hearts
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        const colors = ['#ff4081', '#f50057', '#9c27b0'];
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 15000);
       }
 
-      // Set interval to create hearts
+      for (let i = 0; i < 15; i++) createHeart();
       setInterval(createHeart, 2000);
+
+      // Sparkles
+      for (let i = 0; i < 10; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.top = (200 + Math.random() * 80 - 40) + 'px';
+        sparkle.style.left = (200 + Math.random() * 80 - 40) + 'px';
+        sparkle.style.animationDelay = (Math.random() * 2) + 's';
+        document.querySelector('.container').appendChild(sparkle);
+      }
     });
-
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerHTML = '❤️';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
-      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-      document.body.appendChild(heart);
-
-      // Clean up hearts after animation
-      setTimeout(() => {
-        heart.remove();
-      }, 15000);
-    }
   </script>
 </body>
 </html>
