@@ -1,242 +1,537 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site para Elizandra</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      font-family: 'Arial', sans-serif;
-      overflow: hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1 ano e 7 meses</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Feliz 1 ano e 7 meses, vida">
+<meta property="og:description" content="Cada momento, cada momento de saudade, cada memória nossa prova a promessa que fizemos.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#11202a">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&family=Caveat:wght@500;600&display=swap');
 
-    .container {
-      text-align: center;
-      position: relative;
-    }
+  :root{
+    --night: #11202a;
+    --night-deep: #0a1620;
+    --gold: #d8aa6c;
+    --rose: #e8a8b4;
+    --green: #4c9a72;
+    --cyan: #7fe5d6;
+    --cream: #f4ede2;
+    --line: rgba(244,237,226,0.18);
+  }
 
-    .message {
-      font-size: 2.5rem;
-      color: #9c27b0;
-      margin-top: 20px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 2s forwards 3s;
-    }
+  *{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-    .sub-message {
-      font-size: 1.2rem;
-      color: #555;
-      margin-top: 15px;
-      opacity: 0;
-      animation: fadeIn 2s forwards 4s;
-    }
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(127,229,214,0.12), transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(76,154,114,0.10), transparent 50%),
+      linear-gradient(180deg, var(--night-deep) 0%, var(--night) 100%);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding: 6vh 6vw 6vh;
+    overflow-x:hidden;
+  }
 
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  .eyebrow{
+    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--cyan); opacity:0; animation: rise 1s ease forwards 0.2s; text-align:center;
+  }
 
-    .lily {
-      width: 300px;
-      height: 300px;
-      position: relative;
-    }
+  h1{
+    font-family:'Playfair Display', serif; font-weight:600;
+    font-size: clamp(2rem, 7vw, 4.2rem);
+    margin: 0.4em 0 0.1em; text-align:center; line-height:1.08;
+    opacity:0; animation: rise 1.1s ease forwards 0.5s;
+  }
+  h1 em{ font-style: italic; color: var(--cyan); }
 
-    .heart {
-      position: absolute;
-      opacity: 0;
-      animation: floatHeart 15s linear infinite;
-    }
+  .sub{
+    max-width: 560px; text-align:center; font-size: 1rem; font-weight:300; line-height:1.7;
+    color: rgba(244,237,226,0.78); margin-top: 0.6em;
+    opacity:0; animation: rise 1.1s ease forwards 0.9s;
+  }
+  .sub a{ color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(216,170,108,0.4); }
+  .sub a:hover{ color: var(--rose); border-color: var(--rose); }
+  .sub a.song-link{ color: var(--cyan); border-bottom: 1px solid rgba(127,229,214,0.45); }
+  .sub a.song-link:hover{ color: #a8f0e4; border-color: #a8f0e4; }
 
-    @keyframes floatHeart {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.8; }
-      90% { opacity: 0.8; }
-      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-    }
+  .tz-row{
+    display:flex; gap: clamp(1rem,6vw,2.4rem); margin-top: 3.2vh;
+    opacity:0; animation: rise 1s ease forwards 1s;
+  }
+  .tz-card{ text-align:center; min-width: 110px; }
+  .tz-city{ font-size: 0.66rem; letter-spacing:0.16em; text-transform:uppercase; color: rgba(244,237,226,0.5); }
+  .tz-time{ font-family:'Playfair Display', serif; font-size: clamp(1.2rem, 4vw, 1.6rem); color: var(--cream); margin-top:0.2em; }
+  .tz-divider{ width:1px; background:var(--line); }
 
-    .date {
-      font-size: 1rem;
-      color: #888;
-      margin-top: 15px;
-      opacity: 0;
-      animation: fadeIn 2s forwards 4.5s;
-    }
+  .loc-line{
+    margin-top: 1.2vh; font-size:0.7rem; font-style:italic; letter-spacing:0.02em;
+    color: rgba(244,237,226,0.4); opacity:0; animation: rise 1s ease forwards 1.4s; text-align:center;
+  }
 
-    a {
-      color: #9c27b0;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+  .bridge-wrap{
+    width: min(720px, 92vw); margin-top: 4.5vh;
+    opacity:0; animation: rise 1.2s ease forwards 1.2s;
+  }
+  .bridge-labels{
+    display:flex; justify-content:space-between;
+    font-family:'Playfair Display', serif; font-style: italic; font-size: 0.9rem;
+    color: rgba(244,237,226,0.65); padding: 0 4px 4px;
+  }
+  .bridge-hint{ text-align:center; font-size:0.66rem; letter-spacing:0.1em; color: rgba(244,237,226,0.35); margin-top:2px; }
+  .replay-icon{
+    background:none; border:none; cursor:pointer; font-size:0.8rem; opacity:0.4;
+    vertical-align:middle; margin-left:5px; padding:5px; line-height:1;
+    transition:opacity 0.3s ease, transform 0.3s ease; min-height:28px; min-width:28px;
+  }
+  .replay-icon:hover{ opacity:0.95; transform: scale(1.2) rotate(-8deg); }
 
-    a:hover {
-      color: #7b1fa2;
-      text-decoration: underline;
-    }
+  svg.bridge{ width:100%; height:auto; display:block; touch-action: manipulation; cursor:pointer; }
+  .arc-path{ fill:none; stroke: var(--line); stroke-width: 1.4; stroke-dasharray: 4 6; }
+  .arc-progress{
+    fill:none; stroke: var(--cyan); stroke-width: 1.6; stroke-linecap: round;
+    stroke-dasharray: 600; stroke-dashoffset: 600;
+    animation: draw 2.4s ease forwards 1.6s;
+    filter: drop-shadow(0 0 4px rgba(127,229,214,0.6));
+  }
+  .city-dot{ fill: var(--cream); }
 
-    /* Sparkles around lily */
-    .sparkle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: #fff;
-      border-radius: 50%;
-      opacity: 0.8;
-      animation: sparkle 2s linear infinite;
-    }
+  .milestone{ cursor:pointer; }
+  .milestone circle.ring{ fill:none; stroke: var(--gold); stroke-width:1; opacity:0.6; animation: pulse 2.6s ease-in-out infinite; }
+  .milestone circle.dot{ fill: var(--gold); }
+  @keyframes pulse{ 0%,100%{ r:5; opacity:0.6; } 50%{ r:7.5; opacity:0.15; } }
 
-    @keyframes sparkle {
-      0% { transform: translate(0,0) scale(0.5); opacity: 1; }
-      50% { transform: translate(10px,-10px) scale(1); opacity: 0.5; }
-      100% { transform: translate(0,0) scale(0.5); opacity: 1; }
-    }
+  .milestone-tip{
+    position:absolute; transform: translate(-50%, -115%);
+    background: rgba(10,22,32,0.95); border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 12px; font-size: 0.76rem; line-height:1.4; color: var(--cream);
+    white-space: nowrap; opacity:0; pointer-events:none; transition: opacity 0.25s ease; z-index: 5;
+  }
+  .milestone-tip.show{ opacity:1; }
+  .milestone-tip .d{ color: var(--cyan); font-weight:500; }
 
-    /* Floating months badge */
-    .badge {
-      position: absolute;
-      top: 10%;
-      right: 5%;
-      background: #9c27b0;
-      color: #fff;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: bold;
-      opacity: 0.9;
-      animation: floatBadge 3s ease-in-out infinite alternate;
-    }
+  .meet-bloom{ opacity:0; transform-origin: center; transform: scale(0.3); animation: bloom 1s cubic-bezier(.2,1.4,.4,1) forwards 3.4s; }
+  @keyframes bloom{ to{ opacity:1; transform: scale(1); } }
+  .fly-flower{ opacity:0; transform: translate(40px,100px); }
 
-    @keyframes floatBadge {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
-    }
-  </style>
+  .counter-row{
+    margin-top: 2.6vh; display:flex; gap: clamp(1.2rem, 5vw, 3rem);
+    opacity:0; animation: rise 1s ease forwards 3.8s; flex-wrap: wrap; justify-content:center;
+  }
+  .counter{ text-align:center; }
+  .counter .num{ font-family:'Playfair Display', serif; font-weight:600; font-size: clamp(1.6rem, 4.5vw, 2.4rem); color: var(--cyan); display:block; line-height:1; }
+  .counter .lbl{ font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244,237,226,0.5); margin-top: 0.5em; display:block; }
+  .divider{ width:1px; background: var(--line); }
+
+  /* ---- full timeline ---- */
+  .timeline-toggle{
+    margin-top: 4vh;
+    background: transparent; border: 1px solid var(--line); color: rgba(244,237,226,0.75);
+    font-family:'Inter', sans-serif; font-size: 0.82rem; padding: 12px 24px; border-radius: 999px;
+    cursor:pointer; min-height:44px; opacity:0; animation: rise 1s ease forwards 4s;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  .timeline-toggle:hover{ border-color: var(--cyan); color: var(--cyan); }
+
+  .timeline{
+    width: min(560px, 92vw);
+    margin-top: 2.4vh;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+  }
+  .timeline.open{ max-height: 1400px; }
+  .timeline-inner{ padding: 4px 0 8px; border-left: 1px solid var(--line); }
+  .t-item{ position:relative; padding: 0 0 22px 26px; }
+  .t-item:last-child{ padding-bottom:0; }
+  .t-item::before{
+    content:''; position:absolute; left:-4.5px; top:4px; width:9px; height:9px;
+    border-radius:50%; background: var(--cyan); box-shadow: 0 0 0 3px rgba(127,229,214,0.15);
+  }
+  .t-item.special::before{ background: var(--gold); box-shadow: 0 0 0 3px rgba(216,170,108,0.18); }
+  .t-date{ font-family:'Playfair Display', serif; font-style: italic; font-size: 0.88rem; color: var(--cyan); }
+  .t-item.special .t-date{ color: var(--gold); }
+  .t-label{ font-size: 0.86rem; color: rgba(244,237,226,0.82); margin-top: 2px; line-height:1.4; }
+
+  .recur-tag{
+    font-family:'Inter', sans-serif; font-size: 0.6rem; letter-spacing:0.04em;
+    color: rgba(244,237,226,0.4); margin-left: 6px; font-style: normal;
+  }
+  .countdown{
+    font-size: 0.74rem; font-style: italic; color: var(--gold);
+    margin-top: 4px; opacity: 0.9;
+  }
+  .upcoming-tag{
+    font-family:'Inter', sans-serif; font-size: 0.58rem; letter-spacing:0.06em; text-transform:uppercase;
+    background: rgba(216,170,108,0.18); color: var(--gold);
+    padding: 2px 8px; border-radius: 999px; margin-left: 7px; vertical-align: middle;
+  }
+  @keyframes glowPulse{
+    0%,100%{ box-shadow: 0 0 0 3px rgba(216,170,108,0.25), 0 0 6px rgba(216,170,108,0.4); }
+    50%{ box-shadow: 0 0 0 5px rgba(216,170,108,0.12), 0 0 14px rgba(216,170,108,0.7); }
+  }
+  .t-item.upcoming::before{ animation: glowPulse 2.4s ease-in-out infinite; }
+  .t-item.upcoming .t-label{ color: var(--cream); }
+
+  .counter-footnote{
+    margin-top: 1.2vh; font-size: 0.64rem; letter-spacing: 0.04em; color: rgba(244,237,226,0.32);
+    opacity:0; animation: rise 1s ease forwards 4s; text-align:center;
+  }
+
+  /* ---- letter ---- */
+  .letter-btn{
+    margin-top: 3vh; background: transparent; border: 1px solid rgba(127,229,214,0.4); color: var(--cyan);
+    font-family:'Inter', sans-serif; font-size: 0.85rem; letter-spacing: 0.04em; padding: 13px 26px;
+    border-radius: 999px; cursor:pointer; opacity:0; animation: rise 1s ease forwards 4.2s;
+    transition: background 0.3s ease, color 0.3s ease; min-height: 44px;
+  }
+  .letter-btn:hover{ background: rgba(127,229,214,0.1); }
+
+  .letter-overlay{
+    position:fixed; inset:0; background: rgba(10,16,22,0.92);
+    display:flex; align-items:center; justify-content:center; padding: 8vh 6vw;
+    opacity:0; pointer-events:none; transition: opacity 0.4s ease; z-index: 50;
+  }
+  .letter-overlay.open{ opacity:1; pointer-events:auto; }
+  .letter-card{
+    max-width: 540px; max-height: 80vh; overflow-y:auto;
+    background: linear-gradient(160deg, #16242f, #0e1b24); border: 1px solid rgba(127,229,214,0.25);
+    border-radius: 18px; padding: clamp(24px,5vw,42px);
+    transform: translateY(20px) scale(0.97); transition: transform 0.4s ease;
+  }
+  .letter-overlay.open .letter-card{ transform: translateY(0) scale(1); }
+  .letter-card p{ font-family:'Caveat', cursive; font-size: clamp(1.25rem, 4vw, 1.6rem); line-height:1.6; color: var(--cream); margin: 0 0 0.6em; }
+  .letter-sign{ font-family:'Caveat', cursive; font-size: 1.8rem; color: var(--cyan); margin-top: 0.6em; }
+  .letter-close{
+    display:block; margin: 24px auto 0; background: transparent; border: 1px solid var(--line);
+    color: rgba(244,237,226,0.7); font-family:'Inter', sans-serif; font-size: 0.78rem;
+    padding: 10px 22px; border-radius: 999px; cursor:pointer; min-height:44px;
+  }
+
+  .footer-date{
+    margin-top: 3vh; font-size: 0.72rem; letter-spacing: 0.06em; color: rgba(244,237,226,0.4);
+    opacity:0; animation: rise 1s ease forwards 4.4s; text-align:center;
+  }
+
+  @keyframes rise{ to{ opacity:1; transform: translateY(0); } from{ transform: translateY(14px); } }
+  @keyframes draw{ to{ stroke-dashoffset: 0; } }
+
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration: 0.01ms !important; animation-delay: 0s !important; } }
+  @media (max-width: 420px){ .tz-row{ gap: 1.4rem; } .counter-row{ gap: 1.2rem; } }
+
+  .mote{ position:fixed; width:3px; height:3px; border-radius:50%; background: var(--cyan); opacity:0; pointer-events:none; animation: drift linear infinite; }
+  @keyframes drift{ 0%{ transform: translateY(0); opacity:0; } 8%{ opacity:0.55; } 92%{ opacity:0.55; } 100%{ transform: translateY(-100vh); opacity:0; } }
+
+  .petal-fall{ position:fixed; top:-30px; pointer-events:none; opacity:0; animation: petalFall linear infinite; }
+  @keyframes petalFall{
+    0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
+    6%{ opacity:0.9; }
+    50%{ transform: translateY(50vh) translateX(var(--drift,20px)) rotate(180deg); }
+    94%{ opacity:0.85; }
+    100%{ transform: translateY(105vh) translateX(calc(var(--drift,20px) * -1)) rotate(360deg); opacity:0; }
+  }
+</style>
 </head>
 <body>
-  <div class="container">
-    <svg class="lily" viewBox="0 0 400 400">
-      <!-- Gradients for side petals -->
-      <defs>
-        <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#FFA500" />
-          <stop offset="100%" stop-color="#FF8C00" />
-        </linearGradient>
-      </defs>
 
-      <!-- Stem -->
-      <path id="stem" d="M200,380 Q200,320 200,250" stroke="#3c9c54" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="400" stroke-dashoffset="400" />
+  <div class="eyebrow">Londres &nbsp;·&nbsp; Brasília</div>
+  <h1>Feliz <em id="duration-headline">1 ano e 7 meses</em>, vida</h1>
+  <p class="sub">
+    Cada momento, cada momento de saudade, cada
+    <a href="https://photos.app.goo.gl/LbAFyTio8C69DCaD7" target="_blank" rel="noopener">memória nossa</a>
+    prova a <a href="https://youtu.be/jqfXJr0dnck?si=4Rulvzyn3v_8hA0i" target="_blank" rel="noopener" class="song-link">promessa ♪</a> que fizemos.
+  </p>
 
-      <!-- Leaves -->
-      <path id="leaf1" d="M200,330 Q170,310 150,330 Q170,350 200,330" fill="#3c9c54" opacity="0" />
-      <path id="leaf2" d="M200,300 Q230,280 250,300 Q230,320 200,300" fill="#3c9c54" opacity="0" />
+  <div class="tz-row">
+    <div class="tz-card"><div class="tz-city">Londres</div><div class="tz-time" id="tz-london">--:--</div></div>
+    <div class="tz-divider"></div>
+    <div class="tz-card"><div class="tz-city">Brasília</div><div class="tz-time" id="tz-brasilia">--:--</div></div>
+  </div>
+  <div class="loc-line" id="loc-line"></div>
 
-      <!-- Lily flower -->
-      <g id="lily">
-        <!-- Stamen -->
-        <path class="stamen" d="M200,200 L200,220" stroke="#ffcc80" stroke-width="3" opacity="0" />
-        <circle class="anther" cx="200" cy="200" r="5" fill="#ff9800" opacity="0" />
+  <div class="bridge-wrap">
+    <div class="bridge-labels"><span>Londres</span><span>Brasília</span></div>
+    <div style="position:relative;">
+      <svg class="bridge" id="bridge-svg" viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg">
+        <path class="arc-path" d="M40,100 Q350,-10 660,100" />
+        <path class="arc-progress" d="M40,100 Q350,-10 660,100" pathLength="600" id="arc-progress-path"/>
+        <circle class="city-dot" cx="40" cy="100" r="5" />
+        <circle class="city-dot" cx="660" cy="100" r="5" />
 
-        <!-- Main petals -->
-        <path class="petal" d="M200,200 Q230,150 200,120 Q170,150 200,200" fill="#f3e5f5" opacity="0" />
-        <path class="petal" d="M200,200 Q150,170 130,130 Q180,160 200,200" fill="#f3e5f5" opacity="0" />
-        <path class="petal" d="M200,200 Q235,210 270,180 Q235,190 200,200" fill="#f3e5f5" opacity="0" />
-        <path class="petal" d="M200,200 Q165,210 130,180 Q165,190 200,200" fill="#f3e5f5" opacity="0" />
+        <g class="milestone" data-date="10 de novembro de 2024" data-label="Nos conhecemos" transform="translate(180,42)">
+          <circle class="ring" r="5"/><circle class="dot" r="3"/>
+        </g>
+        <g class="milestone" data-date="30 de novembro de 2024" data-label="Começamos a namorar" transform="translate(310,12)">
+          <circle class="ring" r="5"/><circle class="dot" r="3"/>
+        </g>
+        <g class="milestone" data-date="5 de fevereiro de 2025" data-label="Sky Garden e Tower Bridge" transform="translate(420,15)">
+          <circle class="ring" r="5"/><circle class="dot" r="3"/>
+        </g>
+        <g class="milestone" data-date="14 de fevereiro de 2025" data-label="Começo da distância" transform="translate(530,38)">
+          <circle class="ring" r="5"/><circle class="dot" r="3"/>
+        </g>
 
-        <!-- Side petals in orange -->
-        <path class="petal side" d="M200,200 Q250,170 270,130 Q220,160 200,200" fill="url(#orangeGradient)" opacity="0" />
-        <path class="petal side" d="M200,200 Q220,230 250,250 Q230,220 200,200" fill="url(#orangeGradient)" opacity="0" />
+        <g class="meet-bloom" transform="translate(335,18)">
+          <path d="M15,40 Q13,20 15,2" stroke="#4c9a72" stroke-width="1.2" fill="none"/>
+          <g fill="#f4ede2" stroke="#cfe8e0" stroke-width="0.4">
+            <circle cx="15" cy="4" r="3.4"/><circle cx="22" cy="9" r="3"/><circle cx="8" cy="9" r="3"/>
+            <circle cx="19" cy="16" r="2.7"/><circle cx="11" cy="16" r="2.7"/><circle cx="15" cy="22" r="2.4"/>
+          </g>
+          <circle cx="15" cy="4" r="0.9" fill="#7fe5d6"/><circle cx="22" cy="9" r="0.8" fill="#7fe5d6"/><circle cx="8" cy="9" r="0.8" fill="#7fe5d6"/>
+        </g>
 
-        <!-- Inner details -->
-        <path class="detail" d="M200,200 Q215,170 200,150 Q185,170 200,200" fill="#e1bee7" opacity="0" />
-        <path class="detail" d="M200,200 Q230,185 250,160 Q220,180 200,200" fill="#e1bee7" opacity="0" />
-        <path class="detail" d="M200,200 Q170,185 150,160 Q180,180 200,200" fill="#e1bee7" opacity="0" />
-      </g>
-    </svg>
+        <g class="fly-flower" id="fly-flower">
+          <path d="M0,12 Q-1,5 0,0" stroke="#4c9a72" stroke-width="1" fill="none"/>
+          <g fill="#f4ede2" stroke="#cfe8e0" stroke-width="0.35">
+            <circle cx="0" cy="0" r="2.6"/><circle cx="5" cy="3" r="2.3"/><circle cx="-5" cy="3" r="2.3"/>
+            <circle cx="3" cy="7" r="2"/><circle cx="-3" cy="7" r="2"/>
+          </g>
+          <circle cx="0" cy="0" r="0.7" fill="#7fe5d6"/>
+        </g>
+      </svg>
+      <div class="milestone-tip" id="milestone-tip"></div>
+    </div>
+    <div class="bridge-hint">toque na linha para ver a flor viajar <button class="replay-icon" id="replay-icon" aria-label="ver a flor viajar de novo">🌸</button></div>
+  </div>
 
-    <h1 class="message">Feliz 1 ano e 2 mês Amor </h1>
-    <p class="sub-message">Cada momento com <a href="https://photos.app.goo.gl/LbAFyTio8C69DCaD7" target="_blank">você</a> floresce como um lírio, e nosso amor só cresce</p>
+  <div class="counter-row">
+    <div class="counter"><span class="num" id="c-years">1</span><span class="lbl">Anos</span></div>
+    <div class="divider"></div>
+    <div class="counter"><span class="num" id="c-months">7</span><span class="lbl">Meses extras</span></div>
+    <div class="divider"></div>
+    <div class="counter"><span class="num" id="c-days">--</span><span class="lbl">Dias no total</span></div>
+    <div class="divider"></div>
+    <div class="counter"><span class="num">∞</span><span class="lbl">Saudade</span></div>
+  </div>
+  <div class="counter-footnote">🕐 esses números se atualizam sozinhos</div>
+
+  <button class="timeline-toggle" id="timeline-toggle">Ver nossa linha do tempo completa</button>
+  <div class="timeline" id="timeline">
+    <div class="timeline-inner">
+      <div class="t-item special"><div class="t-date">10 de novembro de 2024</div><div class="t-label">Nos conhecemos</div></div>
+      <div class="t-item"><div class="t-date">23 de novembro de 2024</div><div class="t-label">Nossa primeira foto juntos</div></div>
+      <div class="t-item special"><div class="t-date">30 de novembro de 2024</div><div class="t-label">Começamos a namorar</div></div>
+      <div class="t-item special" data-recurring="1" data-month="11" data-day="30">
+        <div class="t-date">30 de novembro <span class="recur-tag">🔁 anual</span></div>
+        <div class="t-label">Nosso aniversário de 1 ano</div>
+        <div class="countdown" id="countdown-1y"></div>
+      </div>
+      <div class="t-item"><div class="t-date">1 de janeiro de 2025</div><div class="t-label">Disney Store, Central London</div></div>
+      <div class="t-item"><div class="t-date">4 de janeiro de 2025</div><div class="t-label">Visitamos o The O2, Londres</div></div>
+      <div class="t-item"><div class="t-date">3 de fevereiro de 2025</div><div class="t-label">Ida ao Ikea</div></div>
+      <div class="t-item special"><div class="t-date">5 de fevereiro de 2025</div><div class="t-label">Sky Garden e Tower Bridge</div></div>
+      <div class="t-item"><div class="t-date">6 a 11 de fevereiro de 2025</div><div class="t-label">Viagamos a Setúbal, Portugal</div></div>
+      <div class="t-item special"><div class="t-date">14 de fevereiro de 2025</div><div class="t-label">Início da distância — Dia dos Namorados nos separando, mas não nos afastando</div></div>
+      <div class="t-item" data-recurring="1" data-month="2" data-day="25">
+        <div class="t-date">25 de fevereiro <span class="recur-tag">🔁 anual</span></div>
+        <div class="t-label">Aniversário seu</div>
+      </div>
+      <div class="t-item" data-recurring="1" data-month="8" data-day="25">
+        <div class="t-date">25 de agosto <span class="recur-tag">🔁 anual</span></div>
+        <div class="t-label">Meu aniversário</div>
+      </div>
+      <div class="t-item special"><div class="t-date">21 de dezembro de 2025</div><div class="t-label">Seu batismo na Igreja Adventista do Sétimo Dia</div></div>
+      <div class="t-item special" data-recurring="1" data-month="5" data-day="30">
+        <div class="t-date">30 de maio <span class="recur-tag">🔁 anual</span></div>
+        <div class="t-label">Nosso aniversário de 1 ano e meio</div>
+        <div class="countdown" id="countdown-15y"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="letter-btn" id="letter-open" style="display:none;">Tocar para ler uma carta</button>
+
+  <div class="footer-date" id="footer-since">desde 30/11/24 — atravessando o Atlântico até o seu coração</div>
+
+  <div class="letter-overlay" id="letter-overlay">
+    <div class="letter-card">
+      <p>Minha vida,</p>
+      <p>Sou eu, escrevendo pra você de Londres, pensando em tudo que vivemos desde aquele 10 de novembro. Faz um ano e sete meses que decidi namorar com você, e eu escolheria de novo todas as vezes.</p>
+      <p>Eu guardo a nossa primeira foto junta, 23 de novembro, como um tesouro. Guardo também cada lugar que caminhamos por Londres — a Disney Store no Ano Novo, o O2, o Ikea, o Sky Garden, a Tower Bridge — e a nossa semana em Setúbal, a última que tivemos juntos antes de eu ter que te ver só pela tela, a partir de 14 de fevereiro.</p>
+      <p>Desde então, eu aprendi a te amar através de fusos horários, de lembretes no calendário e de "bom dia" que pra mim já é quase noite. E eu vi você se tornar ainda mais você no dia em que se batizou, 21 de dezembro — um dos dias mais bonitos que eu já vivi ao seu lado.</p>
+      <p>Obrigado por escolher isso comigo, todos os dias, mesmo à distância. Eu te amo, e essa promessa que fizemos eu pretendo cumprir até não haver mais distância nenhuma entre nós.</p>
+      <div class="letter-sign">Seu, para sempre.</div>
+      <button class="letter-close" id="letter-close">Fechar</button>
+    </div>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Stem animation
-      const stem = document.getElementById('stem');
-      setTimeout(() => {
-        stem.style.transition = 'stroke-dashoffset 2s ease-in-out';
-        stem.style.strokeDashoffset = '0';
-      }, 500);
+    const startDate = new Date(2024, 10, 30);
 
-      // Leaves animation
-      const leaf1 = document.getElementById('leaf1');
-      const leaf2 = document.getElementById('leaf2');
-      setTimeout(() => leaf1.style.opacity = '1', 1500);
-      setTimeout(() => leaf2.style.opacity = '1', 1800);
+    function updateCounters(){
+      const now = new Date();
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+      if(days < 0){ months -= 1; const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0); days += prevMonth.getDate(); }
+      if(months < 0){ months += 12; years -= 1; }
+      const totalDays = Math.floor((now - startDate) / (1000*60*60*24));
+      document.getElementById('c-years').textContent = years;
+      document.getElementById('c-months').textContent = months;
+      document.getElementById('c-days').textContent = totalDays;
+      const yLabel = years === 1 ? 'ano' : 'anos';
+      const mLabel = months === 1 ? 'mês' : 'meses';
+      document.getElementById('duration-headline').textContent =
+        months === 0 ? `${years} ${yLabel}` : `${years} ${yLabel} e ${months} ${mLabel}`;
+    }
+    updateCounters();
+    setInterval(updateCounters, 60*60*1000);
 
-      // Stamen animation
-      const stamen = document.querySelector('.stamen');
-      const anther = document.querySelector('.anther');
-      setTimeout(() => {
-        stamen.style.opacity = '1';
-        anther.style.opacity = '1';
-      }, 2000);
+    function updateClocks(){
+      const opts = { hour: '2-digit', minute:'2-digit', hour12:false };
+      document.getElementById('tz-london').textContent = new Intl.DateTimeFormat('pt-BR', {...opts, timeZone:'Europe/London'}).format(new Date());
+      document.getElementById('tz-brasilia').textContent = new Intl.DateTimeFormat('pt-BR', {...opts, timeZone:'America/Sao_Paulo'}).format(new Date());
+    }
+    updateClocks();
+    setInterval(updateClocks, 30000);
 
-      // Petal animations with gentle falling
-      const petals = document.querySelectorAll('.petal');
-      petals.forEach((petal, index) => {
-        setTimeout(() => {
-          petal.style.opacity = '1';
-          petal.style.transition = 'opacity 0.8s ease-in-out, transform 5s ease-in';
-          petal.style.transform = 'translateY(0)';
-          // Falling effect after bloom
-          setTimeout(() => {
-            petal.style.transform = 'translateY(50px) rotate(15deg)';
-          }, 2000);
-        }, 2200 + (index * 150));
+    // location line — confirms where the page is reaching her from/to
+    (function(){
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+      const brazilTz = ['America/Sao_Paulo','America/Bahia','America/Fortaleza','America/Recife','America/Manaus','America/Belem','America/Maceio','America/Campo_Grande','America/Cuiaba','America/Porto_Velho','America/Boa_Vista','America/Rio_Branco','America/Araguaina','America/Santarem','America/Noronha','America/Eirunepe'];
+      let msg;
+      if(brazilTz.includes(tz)) msg = '📍 chegando até você direto de Brasília, com saudade';
+      else if(tz === 'Europe/London') msg = '📍 escrito em Londres, atravessando o oceano até você';
+      else msg = '📍 não importa onde você esteja, isso te alcança';
+      const el = document.getElementById('loc-line');
+      if(el) el.textContent = msg;
+    })();
+
+    // recurring milestones: countdown + highlight the soonest one
+    function daysUntil(month, day){
+      const now = new Date();
+      const todayZero = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      let target = new Date(now.getFullYear(), month - 1, day);
+      if(target < todayZero){ target = new Date(now.getFullYear() + 1, month - 1, day); }
+      return Math.round((target - todayZero) / (1000*60*60*24));
+    }
+    (function(){
+      const items = document.querySelectorAll('.t-item[data-recurring]');
+      let soonestItem = null, soonestDiff = Infinity;
+      items.forEach(item => {
+        const m = parseInt(item.dataset.month, 10);
+        const d = parseInt(item.dataset.day, 10);
+        const diff = daysUntil(m, d);
+        if(diff < soonestDiff){ soonestDiff = diff; soonestItem = item; }
+        const cd = item.querySelector('.countdown');
+        if(cd){ cd.textContent = diff === 0 ? 'é hoje! 🎉' : `faltam ${diff} dia${diff === 1 ? '' : 's'}`; }
       });
-
-      // Detail animations
-      const details = document.querySelectorAll('.detail');
-      details.forEach((detail, index) => {
-        setTimeout(() => detail.style.opacity = '1', 3000 + (index * 150));
-      });
-
-      // Floating hearts
-      function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
-        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-        const colors = ['#ff4081', '#f50057', '#9c27b0'];
-        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 15000);
+      if(soonestItem){
+        soonestItem.classList.add('upcoming');
+        const dateEl = soonestItem.querySelector('.t-date');
+        if(dateEl) dateEl.insertAdjacentHTML('beforeend', '<span class="upcoming-tag">próximo</span>');
       }
+    })();
 
-      for (let i = 0; i < 15; i++) createHeart();
-      setInterval(createHeart, 2000);
-
-      // Sparkles
-      for (let i = 0; i < 10; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.style.top = (200 + Math.random() * 80 - 40) + 'px';
-        sparkle.style.left = (200 + Math.random() * 80 - 40) + 'px';
-        sparkle.style.animationDelay = (Math.random() * 2) + 's';
-        document.querySelector('.container').appendChild(sparkle);
+    const tip = document.getElementById('milestone-tip');
+    const svgWrap = document.getElementById('bridge-svg').parentElement;
+    document.querySelectorAll('.milestone').forEach(m => {
+      function show(){
+        const rect = m.getBoundingClientRect();
+        const wrapRect = svgWrap.getBoundingClientRect();
+        tip.innerHTML = `<span class="d">${m.dataset.date}</span><br>${m.dataset.label}`;
+        tip.style.left = (rect.left - wrapRect.left + rect.width/2) + 'px';
+        tip.style.top = (rect.top - wrapRect.top) + 'px';
+        tip.classList.add('show');
       }
+      function hide(){ tip.classList.remove('show'); }
+      m.addEventListener('mouseenter', show);
+      m.addEventListener('mouseleave', hide);
+      m.addEventListener('touchstart', (e)=>{ e.stopPropagation(); show(); setTimeout(hide, 2200); }, {passive:true});
+      m.addEventListener('click', (e)=> e.stopPropagation());
     });
+
+    const flyFlower = document.getElementById('fly-flower');
+    const arcPath = document.getElementById('arc-progress-path');
+    const pathLen = arcPath.getTotalLength();
+    let flying = false;
+    function flyAlongArc(){
+      if(flying) return;
+      flying = true;
+      flyFlower.style.opacity = '1';
+      const duration = 2600;
+      const start = performance.now();
+      function step(t){
+        const elapsed = t - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = progress < 0.5 ? 2*progress*progress : 1 - Math.pow(-2*progress+2,2)/2;
+        const pt = arcPath.getPointAtLength(eased * pathLen);
+        flyFlower.setAttribute('transform', `translate(${pt.x},${pt.y}) rotate(${eased*360})`);
+        if(progress < 1){ requestAnimationFrame(step); } else { flyFlower.style.opacity = '0'; flying = false; }
+      }
+      requestAnimationFrame(step);
+    }
+    document.getElementById('bridge-svg').addEventListener('click', flyAlongArc);
+    document.getElementById('replay-icon').addEventListener('click', (e)=>{ e.stopPropagation(); flyAlongArc(); });
+
+    const overlay = document.getElementById('letter-overlay');
+    document.getElementById('letter-open').addEventListener('click', ()=> overlay.classList.add('open'));
+    document.getElementById('letter-close').addEventListener('click', ()=> overlay.classList.remove('open'));
+    overlay.addEventListener('click', (e)=>{ if(e.target === overlay) overlay.classList.remove('open'); });
+
+    const timelineBtn = document.getElementById('timeline-toggle');
+    const timeline = document.getElementById('timeline');
+    timelineBtn.addEventListener('click', ()=>{
+      timeline.classList.toggle('open');
+      timelineBtn.textContent = timeline.classList.contains('open') ? 'Esconder linha do tempo' : 'Ver nossa linha do tempo completa';
+    });
+
+    if(location.hash === '#timeline'){
+      timeline.classList.add('open');
+      timelineBtn.textContent = 'Esconder linha do tempo';
+      setTimeout(()=>{ timelineBtn.scrollIntoView({ behavior:'smooth', block:'center' }); }, 350);
+    }
+
+    for(let i=0;i<12;i++){
+      const m = document.createElement('div');
+      m.className='mote';
+      m.style.left = Math.random()*100+'vw';
+      m.style.bottom = '-10px';
+      m.style.animationDuration = (Math.random()*14+12)+'s';
+      m.style.animationDelay = (Math.random()*10)+'s';
+      document.body.appendChild(m);
+    }
+
+    const bellSVG = (size, opacity) => `
+      <svg width="${size}" height="${size}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10,2 C14,2 16,7 14,12 C12,16 8,16 6,12 C4,7 6,2 10,2 Z" fill="#f4ede2" stroke="#bfe3da" stroke-width="0.6" opacity="${opacity}"/>
+        <circle cx="10" cy="13.5" r="0.9" fill="#7fe5d6" opacity="${opacity}"/>
+      </svg>`;
+
+    function getBrasiliaHour(){
+      const fmt = new Intl.DateTimeFormat('en-GB', { hour:'2-digit', hour12:false, timeZone:'America/Sao_Paulo' });
+      return parseInt(fmt.format(new Date()), 10);
+    }
+    const bHour = getBrasiliaHour();
+    const isHerNight = (bHour >= 21 || bHour < 6);
+    const petalInitialCount = isHerNight ? 5 : 9;
+    const petalInterval = isHerNight ? 2800 : 1600;
+    const petalDurMin = isHerNight ? 13 : 9;
+    const petalDurRange = isHerNight ? 9 : 8;
+
+    function spawnPetal(){
+      const p = document.createElement('div');
+      p.className = 'petal-fall';
+      const size = Math.random()*8 + 9;
+      p.style.left = Math.random()*100 + 'vw';
+      p.style.setProperty('--drift', (Math.random()*50 - 25) + 'px');
+      p.style.animationDuration = (Math.random()*petalDurRange + petalDurMin) + 's';
+      p.style.animationDelay = (Math.random()*4) + 's';
+      p.innerHTML = bellSVG(size, (Math.random()*0.3 + (isHerNight ? 0.4 : 0.6)).toFixed(2));
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(), 19000);
+    }
+    for(let i=0;i<petalInitialCount;i++) spawnPetal();
+    setInterval(spawnPetal, petalInterval);
   </script>
 </body>
 </html>
