@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1 ano e 7 meses</title>
+<title>1 ano e 11 meses</title>
 <meta property="og:type" content="website">
-<meta property="og:title" content="Feliz 1 ano e 7 meses, vida">
+<meta property="og:title" content="Feliz 1 ano e 11 meses, vida">
 <meta property="og:description" content="Cada momento, cada momento de saudade, cada memória nossa prova a promessa que fizemos.">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#11202a">
@@ -231,6 +229,8 @@
   .mote{ position:fixed; width:3px; height:3px; border-radius:50%; background: var(--cyan); opacity:0; pointer-events:none; animation: drift linear infinite; }
   @keyframes drift{ 0%{ transform: translateY(0); opacity:0; } 8%{ opacity:0.55; } 92%{ opacity:0.55; } 100%{ transform: translateY(-100vh); opacity:0; } }
 
+  #fx{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:2; }
+
   .petal-fall{ position:fixed; top:-30px; pointer-events:none; opacity:0; animation: petalFall linear infinite; }
   @keyframes petalFall{
     0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
@@ -242,9 +242,10 @@
 </style>
 </head>
 <body>
+  <canvas id="fx" aria-hidden="true"></canvas>
 
   <div class="eyebrow">Londres &nbsp;·&nbsp; Brasília</div>
-  <h1>Feliz <em id="duration-headline">1 ano e 7 meses</em>, vida</h1>
+  <h1>Feliz <em id="duration-headline">1 ano e 11 meses</em>, vida</h1>
   <p class="sub">
     Cada momento, cada momento de saudade, cada
     <a href="https://photos.app.goo.gl/c8NmaDNJNvZzmDsT8" target="_blank" rel="noopener">memória nossa</a>
@@ -252,50 +253,59 @@
   </p>
 
   <div class="tz-row">
-    <div class="tz-card"><div class="tz-city">Londres</div><div class="tz-time" id="tz-london">--:--</div></div>
+    <div class="tz-card"><div class="tz-city">Londres</div><div class="tz-time" id="tz-london">22:34</div></div>
     <div class="tz-divider"></div>
-    <div class="tz-card"><div class="tz-city">Brasília</div><div class="tz-time" id="tz-brasilia">--:--</div></div>
+    <div class="tz-card"><div class="tz-city">Brasília</div><div class="tz-time" id="tz-brasilia">18:34</div></div>
   </div>
-  <div class="loc-line" id="loc-line"></div>
+  <div class="loc-line" id="loc-line">📍 escrito em Londres, atravessando o oceano até você</div>
 
   <div class="bridge-wrap">
     <div class="bridge-labels"><span>Londres</span><span>Brasília</span></div>
     <div style="position:relative;">
       <svg class="bridge" id="bridge-svg" viewBox="0 0 700 140" xmlns="http://www.w3.org/2000/svg">
-        <path class="arc-path" d="M40,100 Q350,-10 660,100" />
-        <path class="arc-progress" d="M40,100 Q350,-10 660,100" pathLength="600" id="arc-progress-path"/>
-        <circle class="city-dot" cx="40" cy="100" r="5" />
-        <circle class="city-dot" cx="660" cy="100" r="5" />
+        <path class="arc-path" d="M40,100 Q350,-10 660,100"></path>
+        <path class="arc-progress" d="M40,100 Q350,-10 660,100" pathLength="600" id="arc-progress-path"></path>
+        <circle class="city-dot" cx="40" cy="100" r="5"></circle>
+        <circle class="city-dot" cx="660" cy="100" r="5"></circle>
 
-        <g class="milestone" data-date="10 de novembro de 2024" data-label="Nos conhecemos" transform="translate(180,42)">
-          <circle class="ring" r="5"/><circle class="dot" r="3"/>
+        <g class="milestone" data-date="10 de novembro de 2024" data-label="Nos conhecemos" transform="translate(90,84)">
+          <circle class="ring" r="5"></circle><circle class="dot" r="3"></circle>
         </g>
-        <g class="milestone" data-date="30 de novembro de 2024" data-label="Começamos a namorar" transform="translate(310,12)">
-          <circle class="ring" r="5"/><circle class="dot" r="3"/>
+        <g class="milestone" data-date="30 de novembro de 2024" data-label="Começamos a namorar" transform="translate(152,68)">
+          <circle class="ring" r="5"></circle><circle class="dot" r="3"></circle>
         </g>
-        <g class="milestone" data-date="5 de fevereiro de 2025" data-label="Sky Garden e Tower Bridge" transform="translate(420,15)">
-          <circle class="ring" r="5"/><circle class="dot" r="3"/>
+        <g class="milestone" data-date="6 a 11 de fevereiro de 2025" data-label="Viagem a Setúbal, Portugal" transform="translate(220,55)">
+          <circle class="ring" r="5"></circle><circle class="dot" r="3"></circle>
         </g>
-        <g class="milestone" data-date="14 de fevereiro de 2025" data-label="Começo da distância" transform="translate(530,38)">
-          <circle class="ring" r="5"/><circle class="dot" r="3"/>
+        <g class="milestone" data-date="14 de fevereiro de 2025" data-label="Começo da distância" transform="translate(288,47)">
+          <circle class="ring" r="5"></circle><circle class="dot" r="3"></circle>
+        </g>
+        <g class="milestone" data-date="21 de dezembro de 2025" data-label="Seu batismo" transform="translate(424,48)">
+          <circle class="ring" r="5"></circle><circle class="dot" r="3"></circle>
+        </g>
+        <g class="milestone" data-date="30 de maio de 2026" data-label="1 ano e meio" transform="translate(505,59)">
+          <circle class="ring" r="5"></circle><circle class="dot" r="3"></circle>
+        </g>
+        <g class="milestone" data-date="30 de novembro de 2026" data-label="2 anos" transform="translate(586,77)">
+          <circle class="ring" r="5"></circle><circle class="dot" r="3"></circle>
         </g>
 
         <g class="meet-bloom" transform="translate(335,18)">
-          <path d="M15,40 Q13,20 15,2" stroke="#4c9a72" stroke-width="1.2" fill="none"/>
+          <path d="M15,40 Q13,20 15,2" stroke="#4c9a72" stroke-width="1.2" fill="none"></path>
           <g fill="#f4ede2" stroke="#cfe8e0" stroke-width="0.4">
-            <circle cx="15" cy="4" r="3.4"/><circle cx="22" cy="9" r="3"/><circle cx="8" cy="9" r="3"/>
-            <circle cx="19" cy="16" r="2.7"/><circle cx="11" cy="16" r="2.7"/><circle cx="15" cy="22" r="2.4"/>
+            <circle cx="15" cy="4" r="3.4"></circle><circle cx="22" cy="9" r="3"></circle><circle cx="8" cy="9" r="3"></circle>
+            <circle cx="19" cy="16" r="2.7"></circle><circle cx="11" cy="16" r="2.7"></circle><circle cx="15" cy="22" r="2.4"></circle>
           </g>
-          <circle cx="15" cy="4" r="0.9" fill="#7fe5d6"/><circle cx="22" cy="9" r="0.8" fill="#7fe5d6"/><circle cx="8" cy="9" r="0.8" fill="#7fe5d6"/>
+          <circle cx="15" cy="4" r="0.9" fill="#7fe5d6"></circle><circle cx="22" cy="9" r="0.8" fill="#7fe5d6"></circle><circle cx="8" cy="9" r="0.8" fill="#7fe5d6"></circle>
         </g>
 
         <g class="fly-flower" id="fly-flower">
-          <path d="M0,12 Q-1,5 0,0" stroke="#4c9a72" stroke-width="1" fill="none"/>
+          <path d="M0,12 Q-1,5 0,0" stroke="#4c9a72" stroke-width="1" fill="none"></path>
           <g fill="#f4ede2" stroke="#cfe8e0" stroke-width="0.35">
-            <circle cx="0" cy="0" r="2.6"/><circle cx="5" cy="3" r="2.3"/><circle cx="-5" cy="3" r="2.3"/>
-            <circle cx="3" cy="7" r="2"/><circle cx="-3" cy="7" r="2"/>
+            <circle cx="0" cy="0" r="2.6"></circle><circle cx="5" cy="3" r="2.3"></circle><circle cx="-5" cy="3" r="2.3"></circle>
+            <circle cx="3" cy="7" r="2"></circle><circle cx="-3" cy="7" r="2"></circle>
           </g>
-          <circle cx="0" cy="0" r="0.7" fill="#7fe5d6"/>
+          <circle cx="0" cy="0" r="0.7" fill="#7fe5d6"></circle>
         </g>
       </svg>
       <div class="milestone-tip" id="milestone-tip"></div>
@@ -306,9 +316,9 @@
   <div class="counter-row">
     <div class="counter"><span class="num" id="c-years">1</span><span class="lbl">Anos</span></div>
     <div class="divider"></div>
-    <div class="counter"><span class="num" id="c-months">7</span><span class="lbl">Meses extras</span></div>
+    <div class="counter"><span class="num" id="c-months">11</span><span class="lbl">Meses extras</span></div>
     <div class="divider"></div>
-    <div class="counter"><span class="num" id="c-days">--</span><span class="lbl">Dias no total</span></div>
+    <div class="counter"><span class="num" id="c-days">689</span><span class="lbl">Dias no total</span></div>
     <div class="divider"></div>
     <div class="counter"><span class="num">∞</span><span class="lbl">Saudade</span></div>
   </div>
@@ -320,11 +330,6 @@
       <div class="t-item special"><div class="t-date">10 de novembro de 2024</div><div class="t-label">Nos conhecemos</div></div>
       <div class="t-item"><div class="t-date">23 de novembro de 2024</div><div class="t-label">Nossa primeira foto juntos</div></div>
       <div class="t-item special"><div class="t-date">30 de novembro de 2024</div><div class="t-label">Começamos a namorar</div></div>
-      <div class="t-item special" data-recurring="1" data-month="11" data-day="30">
-        <div class="t-date">30 de novembro <span class="recur-tag">🔁 anual</span></div>
-        <div class="t-label">Nosso aniversário de 1 ano</div>
-        <div class="countdown" id="countdown-1y"></div>
-      </div>
       <div class="t-item"><div class="t-date">1 de janeiro de 2025</div><div class="t-label">Disney Store, Central London</div></div>
       <div class="t-item"><div class="t-date">4 de janeiro de 2025</div><div class="t-label">Visitamos o The O2, Londres</div></div>
       <div class="t-item"><div class="t-date">3 de fevereiro de 2025</div><div class="t-label">Ida ao Ikea</div></div>
@@ -340,10 +345,11 @@
         <div class="t-label">Meu aniversário</div>
       </div>
       <div class="t-item special"><div class="t-date">21 de dezembro de 2025</div><div class="t-label">Seu batismo na Igreja Adventista do Sétimo Dia</div></div>
-      <div class="t-item special" data-recurring="1" data-month="5" data-day="30">
-        <div class="t-date">30 de maio <span class="recur-tag">🔁 anual</span></div>
-        <div class="t-label">Nosso aniversário de 1 ano e meio</div>
-        <div class="countdown" id="countdown-15y"></div>
+      <div class="t-item special"><div class="t-date">30 de maio de 2026</div><div class="t-label">Nosso aniversário de 1 ano e meio</div></div>
+      <div class="t-item special" data-recurring="1" data-month="11" data-day="30">
+        <div class="t-date">30 de novembro de 2026</div>
+        <div class="t-label">Nosso aniversário de 2 anos</div>
+        <div class="countdown" id="countdown-1y"></div>
       </div>
     </div>
   </div>
@@ -354,6 +360,11 @@
 
   <div class="letter-overlay" id="letter-overlay">
     <div class="letter-card">
+      <p><em>Como te amo? Deixe-me contar as formas.<br>
+      Eu te amo na profundidade, na largura e na altura<br>
+      que minha alma alcança, quando sente, fora da vista,<br>
+      os confins do Ser e a graça ideal.</em></p>
+      <p>— Elizabeth Barrett Browning, Soneto 43</p>
       <p>Minha vida,</p>
       <p>Sou eu, escrevendo pra você de Londres, pensando em tudo que vivemos desde aquele 10 de novembro. Faz um ano e sete meses que decidi namorar com você, e eu escolheria de novo todas as vezes.</p>
       <p>Eu guardo a nossa primeira foto junta, 23 de novembro, como um tesouro. Guardo também cada lugar que caminhamos por Londres — a Disney Store no Ano Novo, o O2, o Ikea, o Sky Garden, a Tower Bridge — e a nossa semana em Setúbal, a última que tivemos juntos antes de eu ter que te ver só pela tela, a partir de 14 de fevereiro.</p>
@@ -382,6 +393,7 @@
       const mLabel = months === 1 ? 'mês' : 'meses';
       document.getElementById('duration-headline').textContent =
         months === 0 ? `${years} ${yLabel}` : `${years} ${yLabel} e ${months} ${mLabel}`;
+      document.title = document.getElementById('duration-headline').textContent;
     }
     updateCounters();
     setInterval(updateCounters, 60*60*1000);
@@ -398,10 +410,12 @@
     (function(){
       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
       const brazilTz = ['America/Sao_Paulo','America/Bahia','America/Fortaleza','America/Recife','America/Manaus','America/Belem','America/Maceio','America/Campo_Grande','America/Cuiaba','America/Porto_Velho','America/Boa_Vista','America/Rio_Branco','America/Araguaina','America/Santarem','America/Noronha','America/Eirunepe'];
+      const h = getBrasiliaHour();
+      const g = (h >= 5 && h < 12) ? 'bom dia' : ((h >= 12 && h < 18) ? 'boa tarde' : 'boa noite');
       let msg;
-      if(brazilTz.includes(tz)) msg = '📍 chegando até você direto de Brasília, com saudade';
-      else if(tz === 'Europe/London') msg = '📍 escrito em Londres, atravessando o oceano até você';
-      else msg = '📍 não importa onde você esteja, isso te alcança';
+      if(brazilTz.includes(tz)) msg = `📍 ${g}, vida — chegando até você direto de Brasília, com saudade`;
+      else if(tz === 'Europe/London') msg = `📍 ${g}, vida — escrito em Londres, atravessando o oceano até você`;
+      else msg = `📍 ${g} — não importa onde você esteja, isso te alcança`;
       const el = document.getElementById('loc-line');
       if(el) el.textContent = msg;
     })();
@@ -501,10 +515,19 @@
       document.body.appendChild(m);
     }
 
-    const bellSVG = (size, opacity) => `
-      <svg width="${size}" height="${size}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10,2 C14,2 16,7 14,12 C12,16 8,16 6,12 C4,7 6,2 10,2 Z" fill="#f4ede2" stroke="#bfe3da" stroke-width="0.6" opacity="${opacity}"/>
-        <circle cx="10" cy="13.5" r="0.9" fill="#7fe5d6" opacity="${opacity}"/>
+    const lilySVG = (size, opacity) => `
+      <svg width="${size}" height="${size}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" opacity="${opacity}">
+        <g transform="translate(10,10)">
+          ${[0,60,120,180,240,300].map(a => `<path transform="rotate(${a})" d="M0,0 C2.6,-2 2.8,-6.2 0,-9 C-2.8,-6.2 -2.6,-2 0,0 Z" fill="#f4ede2" stroke="#e8a8b4" stroke-width="0.5"/>`).join('')}
+          <circle r="1.1" fill="#d8aa6c"/>
+        </g>
+      </svg>`;
+
+    const snowSVG = (size, opacity) => `
+      <svg width="${size}" height="${size}" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" opacity="${opacity}">
+        <g transform="translate(10,10)" stroke="#dff7f3" stroke-width="1" stroke-linecap="round" fill="none">
+          ${[0,60,120].map(a => `<line transform="rotate(${a})" x1="0" y1="-8" x2="0" y2="8"/>`).join('')}
+        </g>
       </svg>`;
 
     function getBrasiliaHour(){
@@ -521,17 +544,105 @@
     function spawnPetal(){
       const p = document.createElement('div');
       p.className = 'petal-fall';
-      const size = Math.random()*8 + 9;
+      const isLily = Math.random() < 0.45;
+      const size = isLily ? Math.random()*6 + 10 : Math.random()*5 + 7;
       p.style.left = Math.random()*100 + 'vw';
       p.style.setProperty('--drift', (Math.random()*50 - 25) + 'px');
       p.style.animationDuration = (Math.random()*petalDurRange + petalDurMin) + 's';
       p.style.animationDelay = (Math.random()*4) + 's';
-      p.innerHTML = bellSVG(size, (Math.random()*0.3 + (isHerNight ? 0.4 : 0.6)).toFixed(2));
+      const op = (Math.random()*0.3 + (isHerNight ? 0.4 : 0.6)).toFixed(2);
+      p.innerHTML = isLily ? lilySVG(size, op) : snowSVG(size, op);
       document.body.appendChild(p);
       setTimeout(()=>p.remove(), 19000);
     }
     for(let i=0;i<petalInitialCount;i++) spawnPetal();
     setInterval(spawnPetal, petalInterval);
+
+    // fogos discretos: lírio e floco de neve, raros e suaves
+    (function(){
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const cv = document.getElementById('fx');
+      if(!cv) return;
+      const ctx = cv.getContext('2d');
+      let W = 0, H = 0;
+      function resize(){
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = window.innerWidth; H = window.innerHeight;
+        cv.width = W*dpr; cv.height = H*dpr;
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function lilyPoints(){
+        const pts = [];
+        for(let i=0;i<120;i++){
+          const a = i/120*Math.PI*2, r = Math.abs(Math.cos(3*a));
+          pts.push([Math.cos(a)*r, Math.sin(a)*r]);
+          if(i%3 === 0) pts.push([Math.cos(a)*r*0.55, Math.sin(a)*r*0.55]);
+        }
+        return pts;
+      }
+      function snowPoints(){
+        const pts = [];
+        for(let k=0;k<6;k++){
+          const a = k*Math.PI/3, dx = Math.cos(a), dy = Math.sin(a);
+          for(let s=1;s<=10;s++) pts.push([dx*s/10, dy*s/10]);
+          [0.5,0.75].forEach(r => {
+            [-1,1].forEach(side => {
+              const b = a + side*Math.PI/4;
+              for(let s=1;s<=3;s++){ const l = 0.28*s/3; pts.push([dx*r + Math.cos(b)*l, dy*r + Math.sin(b)*l]); }
+            });
+          });
+        }
+        return pts;
+      }
+
+      const bursts = [];
+      const EXP = 1800, HOLD = 1400, FADE = 2600;
+
+      function launch(kind){
+        const pts = kind === 'lily' ? lilyPoints() : snowPoints();
+        const colors = kind === 'lily' ? ['#f4ede2','#e8a8b4','#d8aa6c'] : ['#dff7f3','#7fe5d6','#f4ede2'];
+        bursts.push({
+          t0: performance.now(),
+          cx: W*(0.15 + Math.random()*0.7),
+          cy: H*(0.12 + Math.random()*0.4),
+          R: 60 + Math.random()*40,
+          p: pts.map(([x,y]) => ({ x, y, c: colors[(Math.random()*colors.length)|0], s: 1.1 + Math.random()*1.1, j: Math.random()*6.28 }))
+        });
+        if(bursts.length === 1) requestAnimationFrame(frame);
+      }
+
+      function frame(now){
+        ctx.clearRect(0,0,W,H);
+        for(let i=bursts.length-1;i>=0;i--){
+          const b = bursts[i], t = now - b.t0;
+          if(t > EXP + HOLD + FADE){ bursts.splice(i,1); continue; }
+          const e = Math.min(t/EXP, 1), ease = 1 - Math.pow(1-e, 3);
+          const fade = t < EXP + HOLD ? 1 : 1 - (t-EXP-HOLD)/FADE;
+          const fall = t > EXP ? Math.pow((t-EXP)/1000, 2)*3 : 0;
+          for(const q of b.p){
+            const tw = 0.7 + 0.3*Math.sin(t/220 + q.j);
+            ctx.globalAlpha = Math.max(0, 0.5*fade*tw*Math.min(1, e*2));
+            ctx.fillStyle = q.c;
+            ctx.beginPath();
+            ctx.arc(b.cx + q.x*b.R*ease, b.cy + q.y*b.R*ease + fall, q.s, 0, Math.PI*2);
+            ctx.fill();
+          }
+        }
+        ctx.globalAlpha = 1;
+        if(bursts.length) requestAnimationFrame(frame);
+      }
+
+      let next = Math.random() < 0.5 ? 'lily' : 'snow';
+      function schedule(delay){
+        setTimeout(() => {
+          if(!document.hidden){ launch(next); next = next === 'lily' ? 'snow' : 'lily'; }
+          schedule(50000 + Math.random()*60000);
+        }, delay);
+      }
+      schedule(35000 + Math.random()*20000);
+    })();
   </script>
-</body>
-</html>
+</body></html>
